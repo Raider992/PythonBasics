@@ -1,25 +1,14 @@
-#1. Создать программно файл в текстовом формате, записать в него построчно данные, вводимые пользователем.
+# 1. Создать программно файл в текстовом формате, записать в него построчно данные, вводимые пользователем.
 # Об окончании ввода данных свидетельствует пустая строка.
 
-
-def write_strings(*args):
-    res = ''
-    terminate = False
-    for i in args:
-        try:
-            with open('task_1.txt', 'w') as file:
-                file.write()
-        except ValueError as e:
-            if i == '\n':
-                terminate = not terminate
-    return res, terminate
+file_strings = []
 
 while True:
-    user_input = input("Введите строки, для выхода нажмите Enter повторно\n").split('\n')
-    res_sum, terminate = write_strings(*user_input)
-    sum +=res_sum
-    print(f"сумма: {sum}")
-
-    if terminate:
-        print('Ввод окончен')
+    user_input = input('Введите строки, конец ввода - пустая строка\n')
+    if user_input == '':
         break
+    file_strings.append(user_input)
+
+for i in file_strings:
+    with open('task_1.txt', 'a') as file:
+        file.write(f"{i}\n")
